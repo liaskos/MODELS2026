@@ -13,6 +13,7 @@ As an example, consider a simple domain-specific language for describing enrollm
 The result of the classification exercises is a dataset of triples $(p,s,v)$ --- rater $p$ classified subject $s$ under term $v$ --- which Peira proposes can be the basis for several metrics of assessing different qualities of the vocabulary, assuming representativeness of descriptions, subjects, and raters. For example, when a term $v$ is rarely or never featured in any triple, this can be construed as evidence of construct excess: $v$ could be dropped from the language. Reversely, subjects $s\in S$ not appearing in any triples could be evidence of construct deficit: while the experimenters thought that $s$ is worthy of being modeled, hence included in $S$, the participants could not classify it under any of the available terms. The authors offer concrete formulae for quantitatively expressing those issues \cite{LZMK.24}. 
 
 For simplicity, we will, here, focus on Peira metrics that compare participant responses with the authoritative classifications, i.e., the complete set of $(p_a,s,v)$ triples that the language designers believe are valid classifications. Following \cite{LZMK.24} let function $n: P\times S \times V \mapsto \{0,1\}$, be $n(p,s,v) = 1$ if participant $p$ has offered classification $(p,s,v)$, and $n(p,s,v) = 0$ otherwise. Let now $p_a$ be a participant from $P$ that holds the authoritative response. Define the following for $p\neq p_a$:
+\vspace{-2mm}
 \[ 
 \mathit{acc}(p,s,v)= \left\{
 \begin{array}{ll}
@@ -39,27 +40,29 @@ For simplicity, we will, here, focus on Peira metrics that compare participant r
 \]
 
 We further use $\mathit{acc}(\cdot,\cdot,v)$, $\mathit{def}(\cdot,\cdot,v)$, and 
-$\mathit{exc}(\cdot,\cdot,v)$ to represent the marginal totals for each term over all subjects and all participants, e.g., $\mathit{acc}(\cdot,\cdot,v) = \sum_{p\in {P \setminus {p_a}}}\sum_{s\in S} \mathit{acc(p,s,v)}$. According to Peira, the quantities offer raw measures of the {\em accuracy}, {\em scope deficiency} and {\em scope excess} of a given term. Specifically, for a specific term $v$, $\mathit{acc}(\cdot,\cdot,v)$ represents the number of ratings in which participants and designers are in agreement with respect to term $v$, $\mathit{def}(\cdot,\cdot,v)$ the number of authoritative ratings that were not picked by participants (``false negatives''), and $\mathit{exc}(\cdot,\cdot,v)$ the participant ratings that are in excess of the authoritative ones (``false positives''). It follows that, in the more familiar terms of precision and recall:
+$\mathit{exc}(\cdot,\cdot,v)$ to represent the marginal totals for each term over all subjects and all participants, e.g., $\mathit{acc}(\cdot,\cdot,v) = \sum_{p\in {P \setminus {p_a}}}\sum_{s\in S} \mathit{acc(p,s,v)}$. According to Peira, the quantities offer raw measures of the {\em accuracy}, {\em scope deficiency} and {\em scope excess} of a given term. 
+%Specifically, for a specific term $v$, $\mathit{acc}(\cdot,\cdot,v)$ represents the number of ratings in which participants and designers are in agreement with respect to term $v$, $\mathit{def}(\cdot,\cdot,v)$ the number of authoritative ratings that were not picked by participants (``false negatives''), and $\mathit{exc}(\cdot,\cdot,v)$ the participant ratings that are in excess of the authoritative ones (``false positives''). 
+It follows that, in the more familiar terms of precision and recall:
 
 \noindent $\mathrm{prec}^{pc}_V(v) = acc(\cdot,\cdot,v)/(acc(\cdot,\cdot,v)+exc(\cdot,\cdot,v))$
 
 \noindent $\mathrm{rec}^{pc}_V(v) = acc(\cdot,\cdot,v)/(acc(\cdot,\cdot,v)+def(\cdot,\cdot,v))$
 
-Seeing participants as classifiers of labeled data (the authoritative classifications), the above describe the \textit{precision-per-concept} and \textit{recall-per-concept} of the corresponding classification exercise. Concepts for which these metrics are comparatively low are subjects for investigation by designers.
+Seeing participants as classifiers of labeled data (the authoritative classifications), the above describe the \textit{precision-per-concept} and \textit{recall-per-concept} of the corresponding classification exercise. Concepts for which these metrics are comparatively low are subjects for investigation by designers. In the same vain, $\mathit{acc}(p,\cdot,\cdot)$, $\mathit{def}(p,\cdot,\cdot)$, and $\mathit{exc}(p,\cdot,\cdot)$ offer corresponding measures characterizing the input of a specific participant compared to the authoritative and are the basis for calculating the corresponding \textit{precision-} and \textit{recall-per-participant metrics}, $\mathrm{prec}^{pp}_V(p)$ and $\mathrm{rec}^{pp}_V(p)$. Below we will use these metrics to compare participant performance.
 
-Likewise, $\mathit{acc}(p,\cdot,\cdot)$, $\mathit{def}(p,\cdot,\cdot)$, and $\mathit{exc}(p,\cdot,\cdot)$ offer corresponding measures characterizing the input of a specific participant compared to the authoritative. These ratings measure the degree to which the participant is in general agreement with the designers vis-a-vis the vocabulary, and characterize the performance of that participant. In terms of precision and recall again:
+%Likewise, $\mathit{acc}(p,\cdot,\cdot)$, $\mathit{def}(p,\cdot,\cdot)$, and $\mathit{exc}(p,\cdot,\cdot)$ offer corresponding measures characterizing the input of a specific participant compared to the authoritative. These ratings measure the degree to which the participant is in general agreement with the designers vis-a-vis the vocabulary, and characterize the performance of that participant. In terms of precision and recall again:
 
-\noindent $\mathrm{prec}^{pp}_V(p) = acc(p,\cdot,\cdot)/(acc(p,\cdot,\cdot)+exc(p,\cdot,\cdot))$
+%\noindent $\mathrm{prec}^{pp}_V(p) = acc(p,\cdot,\cdot)/(acc(p,\cdot,\cdot)+exc(p,\cdot,\cdot))$
 
-\noindent $\mathrm{rec}^{pp}_V(p) = acc(p,\cdot,\cdot)/(acc(p,\cdot,\cdot)+def(p,\cdot,\cdot))$
+%\noindent $\mathrm{rec}^{pp}_V(p) = acc(p,\cdot,\cdot)/(acc(p,\cdot,\cdot)+def(p,\cdot,\cdot))$
 
-These metrics are called \textit{precision-per-participant} and \textit{recall-per-participant} and are used in Peira to also evaluate the language in a way that is amenable to statistical inferences. Below we will use these metrics to compare participant performance.
+%These metrics are called \textit{precision-per-participant} and \textit{recall-per-participant} and are used in Peira to also evaluate the language in a way that is amenable to statistical inferences. Below we will use these metrics to compare participant performance.
 
 \red{Importantly, Peira accepts that quality indicators do not characterize the language absolutely, but relatively to a group of raters and the training the raters have received on the language. 
 %In other words, the same language may perform differently if raters are sampled from different populations and are trained in different ways or to different levels.}
-Hence, practical Peira evaluations require that raters are sampled from the population of prospective users of the language, or a population that can convincingly act as a proxy thereof.
+Hence, Peira evaluations aimed at assessing the quality of a language vis-\`{a}-vis a specific user population, require that raters are sampled from that population, or a population that can convincingly act as a proxy thereof.
 }
 %It follows that, ideally, raters are sampled from the prospective user population and are subjected to the level and kind of training that such users are expected to through before becoming productive with the language.}
 %For example, a language can exhibit good quality when used by trained experts (e.g., its designers) but exhibit issues when used by persons with different backgrounds and with limited training on it. The significance of this depends on what the target user population is and }
-Moreover, while Peira is agnostic to how experimenters acquire ratings in practice, in their experiments, the authors have utilized questionnaire-style instruments in which participants, after being shown training videos, are presented a case, followed by a presentation of subjects below each of which a multi-choice inventory of vocabulary terms (plus the ``None'' option) are offered for participants to classify the subject under one or more terms \cite{LZMK.24}. In the experimental study we followed the same rating acquisition style, as we describe below.
+Further, while Peira is agnostic to how experimenters acquire ratings in practice, in their experiments, the authors have utilized questionnaire-style instruments in which participants, after being shown training videos, are presented a case, followed by a presentation of subjects, below each of which a multi-choice inventory of vocabulary terms (plus the ``None'' option) are offered for participants to classify the subject \cite{LZMK.24}. In our experimental study we followed the same rating acquisition style.
 
