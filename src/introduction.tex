@@ -1,23 +1,11 @@
 \section{Introduction}
 
-% The imprtance of language and what they do.
 Model-driven engineering of software-intensive systems is heavily based on the definition and use of \textit{conceptual modeling languages}. Such languages prescribe how modelers are supposed to build models and how readers are meant to understand those models. 
 
-%A well-designed conceptual modeling language supports the efficient development of comprehensible conceptual models that are usable in different activities of the engineering lifecycle, including stakeholder communication, decision making, validation and verification, and code generation.
-
-% Constitutents of Languages
 The heart of a modeling language is an \textit{ontology} that captures a shared \textit{conceptualization} of a domain among language users \cite{Guiz.07}. The constituents of the ontology are \textit{concepts} which are used to organize the apprehension and communication of pertinent phenomena in the domain. In the language, concepts are represented through a \textit{vocabulary} of \textit{terms}, i.e., a set of lexical, symbolic, and/or diagrammatic elements. UML state machine models \cite{UML.17}, for example, are based on concepts such as \textit{state}, \textit{transition}, and \textit{trigger}, represented lexically in English through a vocabulary including terms, such as ``state'', ``transition'', ``trigger'', as well as visual elements, such as rounded rectangles, arrows, and labels on arrows. 
 
-%We will, henceforth, use the word \textit{term} to refer to any kind of signifier (lexical, diagrammatic, or other). 
-
 The selection of concepts that should be included in the language and the terms for representing those concepts are the result of a design effort. As in any design effort, the outcome can enjoy different degrees of success as reflected by the \textit{quality} of the resulting modeling language. In recognition of this, several efforts to conceptualize language quality can be found in the literature \cite{Krog.12,NePG.12,WaWe.93,Mood.09}. 
-Of specific interest here is a proposal by Wand and Weber to characterize pathologies of vocabulary designs based on how exactly the vocabulary-ontology mapping is misaligned \cite{WaWe.93}. 
-%A key focus has been the \textit{appropriateness} \cite{Krog.12,Guiz.05} of a chosen vocabulary vis-\`{a}-vis the concepts of the underlying ontology it is intended to represent. Wand and Weber, specifically, introduce a framework for characterizing pathologies of vocabulary designs based on how exactly the vocabulary-ontology mapping is misaligned \cite{WeWa.93}. 
-For example, a language suffers from \textit{construct deficit} when there are concepts in the ontology that are not represented by corresponding terms in the vocabulary, and, conversely, \textit{construct excess}, when there are terms that do not correspond to any concept in the ontology.
-
-% The peira approach
-%With the dimensions of vocabulary quality theoretically defined in such a way, the natural question is how one can measure the quality of a given language design along those dimensions. 
-
+Of specific interest here is a proposal by Wand and Weber to characterize pathologies of vocabulary designs based on how exactly the vocabulary-ontology mapping is misaligned \cite{WaWe.93}. For example, a language suffers from \textit{construct deficit} when there are concepts in the ontology that are not represented by corresponding terms in the vocabulary, and, conversely, \textit{construct excess}, when there are terms that do not correspond to any concept in the ontology.
 
 Having defined vocabulary quality attributes in such a way, the natural question is how these attributes can be measured. An empirical approach for doing so has been proposed by Liaskos et al. \cite{LZMK.24}. Their framework, called \textit{Peira}, proposes exposing experimental participants to chunks of ``raw'' unstructured domain information and asking them to classify such chunks into terms of the language vocabulary under investigation, after first training them to the language. The outcomes of the classification are then used to calculate a variety of metrics either based on comparison to authoritative classifications, i.e., classifications claimed to be correct by the vocabulary designers themselves, or based on measures of agreement among the participants. Each of those metrics is then used as an indicator of a language issue such as the ones discussed above --- construct deficit, construct excess, etc. 
 
