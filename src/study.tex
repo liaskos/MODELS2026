@@ -8,7 +8,7 @@ The Peira process is based on recruiting, training, and having experimental part
 
 \textbf{RQ2.} Does model size affect the performance of LLMs in executing Peira's rating tasks?
 
-To answer these questions, we apply Peira on a chosen modeling language in two ways: (a) with human participants performing the ratings, as proposed by the method, and (b) with LLMs performing the ratings instead. To assess whether LLMs perform at human level so as to justify their use as substitutes for human raters (RQ1), we measure and compare the rating performance, in terms of precision and recall with respect to the authoritative ratings, of LLMs vs. humans. For LLMs to be considered an appropriate substitute for humans for the task, we require that their performance falls within a confidence interval of average human performance; otherwise, if LLMs perform significantly better or worse than humans, they cannot be considered faithful proxies of human judgment for this task. Furthermore, the LLMs are sampled to be of different sizes in number of parameters so as to allow size to be investigated as a predictor of performance in the classification tasks (RQ2).
+To answer these questions, we apply Peira on a chosen modeling language in two ways: (a) with human participants performing the ratings, as proposed by the method, and (b) with LLMs performing the ratings instead. To assess whether LLMs perform at human level so as to justify their use as substitutes for human raters (RQ1), we measure and compare the rating performance of LLMs vs. humans in terms of precision and recall with respect to the authoritative ratings. For LLMs to be considered an appropriate substitute for humans for the task, we require that their performance falls within a confidence interval of average human performance; otherwise, if LLMs perform significantly better or worse than humans, they cannot be considered faithful proxies of human judgment for this task. Furthermore, the LLMs are sampled to be of different sizes in number of parameters so as to allow size to be investigated as a predictor of performance in the classification tasks (RQ2).
 
 \subsection{Study Design}
 
@@ -53,7 +53,7 @@ In accordance with our research questions, the null hypotheses are as follows:
 
 
 
-To attempt to reject H$_0^1$, we form the corresponding confidence interval and check if the precision and recall of each LLM falls within the interval. To reject H$_0^2$ we perform a simple regression using model size as predictor and the F1 score (harmonic mean of precision and recall) as response variable. 
+To investigate H$_0^1$, we form the corresponding confidence interval and check whether the precision and recall of each LLM fall within the interval. To evaluate H$_0^2$ we fit a simple linear regression model using log-transformed model size as predictor and the F1 score (harmonic mean of precision and recall) as response variable.
 
 \subsection{Results}
 
@@ -67,7 +67,7 @@ Of the forty (40) participants invited, five (5) were disqualified due to a low 
 
 \subsubsection{Outcome}
 
-The LLMs achieved higher performance than humans overall. Table \ref{tab:medians} shows the median precision and recall values for Humans and LLMs, accounted per concept and per participant. Furthermore, we consider the 35 data human points and create studentized bootstrap confidence intervals for precision and recall (bootstrap-t method; R = 999 iterations) at the 95\% confidence level. The intervals can be viewed in Figure \ref{fig:ci} along with labeled dots representing the corresponding performance of each LLM. All LLM points fall outside the 95\% confidence interval, meaning that for each LLM, we reject the null hypothesis \textbf{H$_0^1$} that its precision and recall are equal to the human population mean ($\alpha$ = 0.05). Thus, by the standard that we set above for justifying  substitutability of humans by LLMs, none of the LLMs can play that specific role: they are too well-performing to be representative of human performance. An alternative visualization can be viewed in Figure \ref{fig:scatter}, where the performance of individual human and LLM participants is plotted. 
+The LLMs achieved higher performance than humans overall. Table \ref{tab:medians} shows the median precision and recall values for humans and LLMs, accounted per concept and per participant. Furthermore, we consider the 35 data human points and create studentized bootstrap confidence intervals for precision and recall (bootstrap-t method; R = 999 iterations) at the 95\% confidence level. The intervals can be viewed in Figure \ref{fig:ci} along with labeled dots representing the corresponding performance of each LLM. All LLM points fall outside the 95\% confidence interval, meaning that for each LLM, we reject the null hypothesis \textbf{H$_0^1$} that its precision and recall are equal to the human population mean ($\alpha$ = 0.05). Thus, by the standard that we set above for justifying  substitutability of humans by LLMs, none of the LLMs can play that specific role: they are too well-performing to be representative of human performance. An alternative visualization can be viewed in Figure \ref{fig:scatter}, where the performance of individual human and LLM participants is plotted. 
 
 
 
